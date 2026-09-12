@@ -20,9 +20,9 @@ try {
     $dist = Join-Path $PSScriptRoot 'dist'
     New-Item -ItemType Directory -Force $dist | Out-Null
     $signer = Join-Path $env:LOCALAPPDATA 'Android\Sdk\build-tools\36.1.0\apksigner.bat'
-    & $signer sign --ks $keyFile --ks-key-alias botluk --ks-pass env:HERMES_SIGN_PASS --out (Join-Path $dist 'Botluk-0.1.0.apk') (Join-Path $PSScriptRoot 'app\build\outputs\apk\release\app-release-unsigned.apk')
+    & $signer sign --ks $keyFile --ks-key-alias botluk --ks-pass env:HERMES_SIGN_PASS --out (Join-Path $dist 'Botluk-0.2.0.apk') (Join-Path $PSScriptRoot 'app\build\outputs\apk\release\app-release-unsigned.apk')
     if ($LASTEXITCODE -ne 0) { throw 'APK signing failed' }
-    & $signer verify --verbose (Join-Path $dist 'Botluk-0.1.0.apk')
+    & $signer verify --verbose (Join-Path $dist 'Botluk-0.2.0.apk')
     if ($LASTEXITCODE -ne 0) { throw 'APK verification failed' }
     & $signer sign --ks $keyFile --ks-key-alias botluk --ks-pass env:HERMES_SIGN_PASS --out (Join-Path $dist 'test-only.apk') (Join-Path $PSScriptRoot 'app\build\outputs\apk\androidTest\debug\app-debug-androidTest.apk')
     if ($LASTEXITCODE -ne 0) { throw 'Test APK signing failed' }

@@ -1,14 +1,18 @@
-# Botluk 0.1.0 — Android
+# Botluk 0.2.0 — Android
 
 Türkçe Android istemcisi. Android 8.0 ve üstü. Birden fazla bot profili, ayrı talimat ve sohbet geçmişi, eşzamanlı istekler, bağlantı testi, demo modu ve sohbet paylaşımı içerir.
 
+## Yeni sohbet tasarımı
+
+Sohbet listesi, bot avatarları, son mesaj önizlemeleri, arama, sabitlenen sohbetler ve Sohbetler/Botlar/Ayarlar sekmeleri. Sohbet ekranında mesaj balonları, zaman bilgisi ve altta tek parça mesaj kutusu bulunur. Önceki Botluk kurulumu üzerine güncellenebilir.
+
 ## İndirme
 
-Son imzalı APK: [`release/Botluk-0.1.0.apk`](release/Botluk-0.1.0.apk). Kaynak ve kurulum paketi: [`release/Botluk-0.1.0-kaynak-ve-kurulum.zip`](release/Botluk-0.1.0-kaynak-ve-kurulum.zip).
+Son imzalı APK: [`release/Botluk-0.2.0.apk`](release/Botluk-0.2.0.apk). Kaynak ve kurulum paketi: [`release/Botluk-0.2.0-kaynak-ve-kurulum.zip`](release/Botluk-0.2.0-kaynak-ve-kurulum.zip).
 
 ## APK kurulumu
 
-Botluk-0.1.0.apk dosyasını telefonunuza indirin. Android istediğinde dosyayı açtığınız uygulama için “Bu kaynaktan yüklemeye izin ver” seçeneğini kullanın. Uygulamayı açıp “Demo botlarıyla dene” ile başlayabilirsiniz. Demo yanıtları örnektir; gerçek model çağrısı yapmaz.
+Botluk-0.2.0.apk dosyasını telefonunuza indirin. Android istediğinde dosyayı açtığınız uygulama için “Bu kaynaktan yüklemeye izin ver” seçeneğini kullanın. Uygulamayı açıp “Demo botlarıyla dene” ile başlayabilirsiniz. Demo yanıtları örnektir; gerçek model çağrısı yapmaz.
 
 APK hiçbir sunucu adresi, kullanıcı API anahtarı veya test sohbeti içermez. Botları telefonda oluşturursunuz. Bot verileri Android Keystore AES-GCM ile şifrelenir; yedekleme ve cihaz aktarımı kapalıdır. Uygulamayı silmek kayıtları siler.
 
