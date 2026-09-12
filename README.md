@@ -1,70 +1,54 @@
-# HermesBot Hub
+# Botluk 0.1.0 — Android
 
-Türkçe arayüzlü Android sohbet istemcisi (Kotlin + Jetpack Compose, Material 3).
+Türkçe Android istemcisi. Android 8.0 ve üstü. Birden fazla bot profili, ayrı talimat ve sohbet geçmişi, eşzamanlı istekler, bağlantı testi, demo modu ve sohbet paylaşımı içerir.
 
-**Paket:** `com.sibakimya.hermesbothub` · minSdk 26 · targetSdk 34 · sürüm 1.0.0 (1)
+## İndirme
 
-Repo: https://github.com/fatsar/hermesbot-hub
+Son imzalı APK: [`release/Botluk-0.1.0.apk`](release/Botluk-0.1.0.apk). Kaynak ve kurulum paketi: [`release/Botluk-0.1.0-kaynak-ve-kurulum.zip`](release/Botluk-0.1.0-kaynak-ve-kurulum.zip).
 
-## Demo nasıl çalışır?
+## APK kurulumu
 
-- Ayarlar’da **Demo** varsayılan olarak **AÇIK**tır.
-- Demo açıkken **ağ çağrısı yoktur**; URL ve Bearer anahtar yok sayılır.
-- Tohum botlar: **Asistan** (mavi), **Satınalma** (yeşil), **Haber** (turuncu).
-- Sohbet yanıtları yerel şablondur; mesajınızı ve bot kişiliğini kabul eder.
+Botluk-0.1.0.apk dosyasını telefonunuza indirin. Android istediğinde dosyayı açtığınız uygulama için “Bu kaynaktan yüklemeye izin ver” seçeneğini kullanın. Uygulamayı açıp “Demo botlarıyla dene” ile başlayabilirsiniz. Demo yanıtları örnektir; gerçek model çağrısı yapmaz.
 
-## Canlı mod
+APK hiçbir sunucu adresi, kullanıcı API anahtarı veya test sohbeti içermez. Botları telefonda oluşturursunuz. Bot verileri Android Keystore AES-GCM ile şifrelenir; yedekleme ve cihaz aktarımı kapalıdır. Uygulamayı silmek kayıtları siler.
 
-1. Ayarlar → Demo’yu kapatın.
-2. **Base URL** ve **Bearer** girin → Kaydet (GET `{base}/health`).
-3. Sağlık yeşilse bot listesi / sohbet canlı API kullanır:
-   - `GET {base}/v1/bots`
-   - `POST {base}/v1/chat/completions`
+## Mevcut Windows Hermes kurulumuna bağlanma
 
-### Base URL ipuçları
+Bu bilgisayarda Hermes `%LOCALAPPDATA%\hermes` altında bulunmuştur. Kaynak paketindeki `Start-Botluk.cmd` dosyası mevcut Hermes kurulumunun API adaptörünü açar; mevcut Hermes yapılandırmasını değiştirmez ve diğer mesajlaşma ağ geçitlerini başlatmaz.
 
-| Ortam | Örnek |
-|--------|--------|
-| Emülatör | `http://10.0.2.2:8787` |
-| Fiziksel telefon | `http://192.168.x.x:8787` |
+1. Telefon ve bilgisayarı aynı güvenilir özel Wi-Fi ağına bağlayın.
+2. Bilgisayarda `ipconfig` çalıştırıp Wi-Fi/Ethernet IPv4 adresini bulun (örneğin `192.168.1.20`).
+3. `Start-Botluk.cmd` dosyasını açın. İstendiğinde bilgisayarın yerel IPv4 adresini girin. Boş bırakırsanız sadece bilgisayardan erişilir.
+4. Ekranda gösterilen adresi ve API anahtarını Android'de botun düzenleme ekranına girin. Demo modunu kapatın, yerel HTTP kutusunu açın, bağlantıyı test edin ve kaydedin.
+5. Model / rota alanı `hermes-agent` olarak kalabilir. Modeli ve sağlayıcı erişimini Hermes yönetir.
+6. Sunucu penceresi açık kalmalıdır. Her açılışta yeni anahtar üretilir; uygulamada güncelleyin. Windows güvenlik duvarı engelliyorsa yalnızca özel ağda ve yerel alt ağdan TCP 8642 erişimi verin. Modem port yönlendirmesi yapmayın.
 
-Telefonda `localhost` **çalışmaz** (cihazın kendisini işaret eder).
+Yerel HTTP anahtarı ve mesajları şifrelemez. İnternet üzerinden kullanım için HTTPS veya güvenli bir özel ağ gerekir. Hermes kendi sunucu araçlarını çalıştırabilir; yalnızca güvendiğiniz kişilere anahtar verin. `localhost` telefonda bilgisayarınızı göstermez.
 
-## Sideload (APK yükleme)
+## Hostinger / başka VPS
 
-1. Ayarlar → **Bilinmeyen kaynaklardan yükleme** aç.
-2. Ekteki / `artifacts/hermesbothub-debug.apk` dosyasını indir → aç → **Yükle**.
-3. İlk açılışta **Demo** açık; Canlı için Settings’te Base URL (emülatör `http://10.0.2.2:8787` veya telefon LAN IP) + Bearer + health OK.
-4. `localhost` telefonda çalışmaz.
+VPS üzerinde Hermes ve model sağlayıcısını kurun; resmi Hermes API sunucusunu etkinleştirin. API'yi `127.0.0.1:8642` üzerinde tutup alan adınızda TLS sertifikalı ters vekil kullanın. Android botunda örneğin `https://hermes.sizin-alan-adiniz/v1` ve VPS API anahtarını kaydedin. Uygulamayı yeniden derlemek gerekmez. HTTP yerel ağ izni, genel internet adresleri için kullanılmaz.
 
-### Sürüm / bütünlük
+Kaynak: https://hermes-agent.nousresearch.com/docs/user-guide/features/api-server
 
-- **package:** `com.sibakimya.hermesbothub`
-- **versionName:** 1.0.0 · **versionCode:** 1
-- **SHA-256:** `14845cf81f9edb4ced0a22f23d36586e051156ddcfa44eaf09d47e41e40fd13b`
-- Dosya: `hermesbothub-debug.apk` (~17 MB)
+## Botların çalışma biçimi ve sınırlar
 
-Debug imzalıdır; Play Store için değildir. Güncellemede aynı debug anahtarı gerekir.
+Her bot ayrı sistem talimatı ve istemci sohbet geçmişidir. Sunucuda ayrı işletim sistemi süreçleri / konteynerler oluşturmaz; aynı Hermes profilinin araç ve dosya izinlerini paylaşır. Ayrı güvenlik alanı isterseniz farklı Hermes profillerini ayrı API adresleriyle kurup her botu ilgili adrese bağlayın.
 
-> Not: APK ikili dosyası bu repoya yüklenmez (boyut sınırı). Dağıtım e-posta eki veya yerel `artifacts/` üzerinden yapılır.
+En fazla dört ağ isteği aynı anda yürür; ek istekler sıraya girer. Sunucunun kendi eşzamanlılık sınırları ayrıca geçerlidir. Bu sürüm 7/24 zamanlanmış otomasyon veya telefon kapalıyken iş takibi içermez. Uygulama süreci Android tarafından kapatılırsa devam eden yanıtı geri alma garantisi yoktur. Ağ zaman aşımı sonrası sunucuda iş devam ediyor olabilir; istekler otomatik tekrarlanmaz.
 
-## Derleme
+Sunucu veya demo modu değişikliği botun eski sohbetini temizler; kayıt öncesi bu durum ekranda belirtilir. Sağlayıcı/model seçiminin geçerli olması Hermes yapılandırmasına bağlıdır. Bu sürüm metin sohbeti içindir; dosya ekleme ve sesli sohbet içermez.
 
-```bash
-export JAVA_HOME=/workspace/jdk
-export ANDROID_HOME=/workspace/android-sdk
-cd /workspace/hermesbot-hub
-./gradlew :app:assembleDebug
+## Derleme ve test
+
+Java 17–23 ile Gradle 8.11.1, Android SDK 36 ve Android Gradle Plugin 8.10.1 kullanılır. Bu makinede Java 19 ile derlendi.
+
+```
+gradlew.bat assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug
 ```
 
-APK: `app/build/outputs/apk/debug/app-debug.apk` → kopya: `artifacts/hermesbothub-debug.apk`
+7 JVM testi: adres normalleştirme, güvenli adres doğrulaması, açık yerel HTTP izni, demo/hata mesajlarının API geçmişinden ayrılması, yetkilendirme ve Türkçe HTTP yanıtı, yönlendirme reddi, hatalı anahtar.
 
-## Mimari (MVP)
+Android API 36 emülatörü: açılış, bot oluşturma, şifreli kayıt/okuma, demo mesaj/yanıt, kayıt ve gezinme test edildi. Mevcut Windows Hermes API adaptörüyle hem doğrudan HTTP hem Android'den gerçek model yanıtı doğrulandı (`hermes-integration-result.json`). Geçici test servisi kapatıldı; kalıcı ağ erişimi veya güvenlik duvarı değişikliği yapılmadı.
 
-- `DemoRepository` — çevrimdışı tohum + şablon
-- `HermesRepository` — health / bots / chat
-- `BotRepository` — Demo/Canlı seçimine göre yönlendirir
-- Room: botlar + mesaj geçmişi
-- SharedPreferences: ayarlar (anahtar loglanmaz)
-
-Ekran akışı: **Ayarlar → sağlık → Bot listesi → Sohbet**
+Dağıtım APK'sı ayrı bir uygulama imza anahtarıyla imzalanır. İmza anahtarı kaynak/indirme paketine dahil edilmez. APK Play Store'a yayımlanmamıştır.
