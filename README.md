@@ -1,3 +1,25 @@
+# HermesBot Hub / Botluk — Android
+
+## HermesBot Hub debug APK (v1.0.0) — indirme
+
+Telefon için güncel debug APK (Drive, herkese açık / Görüntüleyen):
+
+- **Direkt indirme:** https://drive.google.com/uc?export=download&id=1QJ6t9U8FRPftpDkeK6_MI119-j21NtY-
+- **Drive sayfası:** https://drive.google.com/file/d/1QJ6t9U8FRPftpDkeK6_MI119-j21NtY-/view?usp=sharing
+- Dosya: `hermesbothub-debug-v1.0.0.apk`
+- Paket: `com.sibakimya.hermesbothub` · versionName `1.0.0` · versionCode `1`
+- SHA-256: `14845cf81f9edb4ced0a22f23d36586e051156ddcfa44eaf09d47e41e40fd13b`
+
+### Sideload
+1. Ayarlar → Bilinmeyen kaynaklardan yükleme (veya bu kaynak) aç  
+2. Linkten APK indir → aç → Yükle  
+3. İlk açılışta **Demo** açık (Asistan / Satınalma / Haber)  
+4. Canlı: Settings → Base URL + Bearer → health OK  
+   - Emülatör: `http://10.0.2.2:8787`  
+   - Telefon: `http://192.168.x.x:<port>` (`localhost` telefonda çalışmaz)
+
+---
+
 # Botluk 0.2.0 — Android
 
 Türkçe Android istemcisi. Android 8.0 ve üstü. Birden fazla bot profili, ayrı talimat ve sohbet geçmişi, eşzamanlı istekler, bağlantı testi, demo modu ve sohbet paylaşımı içerir.
@@ -18,7 +40,7 @@ APK hiçbir sunucu adresi, kullanıcı API anahtarı veya test sohbeti içermez.
 
 ## Mevcut Windows Hermes kurulumuna bağlanma
 
-Bu bilgisayarda Hermes `%LOCALAPPDATA%\hermes` altında bulunmuştur. Kaynak paketindeki `Start-Botluk.cmd` dosyası mevcut Hermes kurulumunun API adaptörünü açar; mevcut Hermes yapılandırmasını değiştirmez ve diğer mesajlaşma ağ geçitlerini başlatmaz.
+Bu bilgisayarda Hermes `%LOCALAPPDATA%\\hermes` altında bulunmuştur. Kaynak paketindeki `Start-Botluk.cmd` dosyası mevcut Hermes kurulumunun API adaptörünü açar; mevcut Hermes yapılandırmasını değiştirmez ve diğer mesajlaşma ağ geçitlerini başlatmaz.
 
 1. Telefon ve bilgisayarı aynı güvenilir özel Wi-Fi ağına bağlayın.
 2. Bilgisayarda `ipconfig` çalıştırıp Wi-Fi/Ethernet IPv4 adresini bulun (örneğin `192.168.1.20`).
